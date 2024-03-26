@@ -16,6 +16,7 @@ class ChatPage extends StatelessWidget {
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+   var email = ModalRoute.of(context)!.settings.arguments ;
     return StreamBuilder<QuerySnapshot>(
       stream: messages.orderBy(KCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
@@ -48,11 +49,15 @@ class ChatPage extends StatelessWidget {
                       reverse: true,
                       controller: _controller,
                       itemCount: messagesList.length,
-                      itemBuilder: (context, index) {
-                        return ChatBubble(
-                          message: messagesList[index],
-                        );
-                      }),
+                      itemBuilder: (context, index)
+                      {
+                        return messagesList[index].id == email
+                            ?SendChatBubble(
+                             message: messagesList[index],)
+                            :ReciveChatBubble(
+                            message: messagesList[index]);
+                      }
+                      ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -60,10 +65,10 @@ class ChatPage extends StatelessWidget {
                     controller: controller,
                     onSubmitted: (data) {
                       messages
-                          .add({KMessage: data, KCreatedAt: DateTime.now()});
+                          .add({KMessage: data, KCreatedAt: DateTime.now(),'id': email });
                       controller.clear();
                       _controller.animateTo(0,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.fastOutSlowIn);
                     },
                     decoration: InputDecoration(
@@ -85,7 +90,7 @@ class ChatPage extends StatelessWidget {
             ),
           );
         } else {
-          return Text('loading');
+          return const Text('loading');
         }
       },
     );

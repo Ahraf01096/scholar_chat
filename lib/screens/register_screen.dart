@@ -8,7 +8,7 @@ import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({super.key});
+  const RegisterScreen({super.key});
 
   static String id = 'RegisterScreen';
 
@@ -104,7 +104,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       });
                       try {
                         await registerUser();
-                        Navigator.pushNamed(context, ChatPage.id);
+                        Navigator.pushNamed(context, ChatPage.id , arguments: email);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           showSnackBar(context, 'The password provided is too weak.');

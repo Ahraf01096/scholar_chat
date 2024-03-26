@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
             key: formKey,
             child: ListView(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
                 Image.asset(
@@ -46,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Scholar Chat',
                       style: TextStyle(
                         fontFamily: 'pacifico',
@@ -57,13 +57,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
                 Row(
                   children: const [
                     Padding(
-                      padding: const EdgeInsets.only(left: 5),
+                      padding:  EdgeInsets.only(left: 5),
                       child: Text(
                         'LOGIN',
                         style: TextStyle(
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {});
                       try {
                         await LoginUser();
-                        Navigator.pushNamed(context, ChatPage.id);
+                        Navigator.pushNamed(context, ChatPage.id , arguments: email);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackBar(
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'don\'t have an account ?',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, RegisterScreen.id);
                       },
-                      child: Text(
+                      child: const Text(
                         ' Register',
                         style: TextStyle(color: Color(0xffC7EDE6)),
                       ),

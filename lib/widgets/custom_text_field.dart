@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFromFieldEmail extends StatelessWidget {
-   CustomTextFromFieldEmail({ this.hintText,this.onChanged});
+   CustomTextFromFieldEmail({super.key,  this.hintText,this.onChanged});
 String? hintText;
 Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       validator: (data){
         if(data!.isEmpty ){
@@ -17,22 +17,22 @@ Function(String)? onChanged;
       onChanged: onChanged,
       decoration: InputDecoration(
 
-          suffixIcon: Icon(Icons.email,color: Color(0xffC7EDE6)),
+          suffixIcon: const Icon(Icons.email,color: Color(0xffC7EDE6)),
           labelText: hintText,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
               color: Colors.white
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Color(0xffC7EDE6),)
+              borderSide: const BorderSide(color: Color(0xffC7EDE6),)
           ),
           enabledBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Colors.white)
+              borderSide: const BorderSide(color: Colors.white)
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Colors.white)
+              borderSide: const BorderSide(color: Colors.white)
           )
       ),
     );
@@ -41,7 +41,7 @@ Function(String)? onChanged;
 
 
 class CustomTextFromFieldPassword extends StatefulWidget {
-  CustomTextFromFieldPassword({ this.hintText,this.onChanged});
+  CustomTextFromFieldPassword({super.key,  this.hintText,this.onChanged});
   String? hintText;
   Function(String)? onChanged;
 
@@ -61,12 +61,12 @@ class _CustomTextFromFieldPasswordState extends State<CustomTextFromFieldPasswor
       },
 
       onChanged: widget.onChanged,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       obscureText: !VisiblePassword,
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
           labelText: widget.hintText,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: Colors.white
           ),
           suffixIcon: IconButton(
@@ -74,7 +74,7 @@ class _CustomTextFromFieldPasswordState extends State<CustomTextFromFieldPasswor
               VisiblePassword
                   ? Icons.visibility
                   : Icons.visibility_off,
-              color: Color(0xffC7EDE6),
+              color: const Color(0xffC7EDE6),
             ),
             onPressed: () {
               setState(() {
@@ -84,15 +84,15 @@ class _CustomTextFromFieldPasswordState extends State<CustomTextFromFieldPasswor
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Color(0xffC7EDE6),)
+              borderSide: const BorderSide(color: Color(0xffC7EDE6),)
           ),
           enabledBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Colors.white)
+              borderSide: const BorderSide(color: Colors.white)
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(color: Colors.white)
+              borderSide: const BorderSide(color: Colors.white)
           )
       ),
     );
